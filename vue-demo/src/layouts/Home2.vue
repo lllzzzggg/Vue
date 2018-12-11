@@ -23,18 +23,16 @@
 		<el-col :span="24" class="main">
 			<aside :class="collapsed?'menu-collapsed':'menu-expanded'">
 				<!--导航菜单-->
-				<el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect" unique-opened router v-show="!collapsed">
+				<el-menu :default-active="$route.path" class="el-menu-vertical-demo" 
+					 unique-opened router v-show="!collapsed">
 					<template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
 						<el-submenu :index="index+''" v-if="!item.leaf">
 							<template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
-							<el-menu-item v-for="child in item.children" :index="child.path" :key="child.path" v-if="!child.hidden">
-								{{child.name}}
-							</el-menu-item>
+							<el-menu-item v-for="child in item.children" :index="child.path" :key="child.path" v-if="!child.hidden">{{child.name}}</el-menu-item>
 						</el-submenu>
 						<el-menu-item v-if="item.leaf&&item.children.length>0" :index="item.children[0].path"><i :class="item.iconCls"></i>{{item.children[0].name}}</el-menu-item>
 					</template>
 				</el-menu>
-				
 				<!--导航菜单-折叠后-->
 				<ul class="el-menu el-menu-vertical-demo collapsed" v-show="collapsed" ref="menuCollapsed">
 					<li v-for="(item,index) in $router.options.routes" v-if="!item.hidden" class="el-submenu item">
@@ -140,68 +138,62 @@
 
 </script>
 
-<style scoped lang="scss">
-	@import '~scss_vars';
+<style scoped lang="less">
 	
-	.container {
-		position: absolute;
-		top: 0px;
-		bottom: 0px;
-		width: 100%;
-		.header {
-			height: 60px;
-			line-height: 60px;
-			background: $color-primary;
-			color:#fff;
-			.userinfo {
-				text-align: right;
-				padding-right: 35px;
-				float: right;
-				.userinfo-inner {
-					cursor: pointer;
-					color:#fff;
-					img {
-						width: 40px;
-						height: 40px;
-						border-radius: 20px;
-						margin: 10px 0px 10px 10px;
-						float: right;
-					}
-				}
-			}
-			.logo {
-				//width:230px;
-				height:60px;
-				font-size: 22px;
-				padding-left:20px;
-				padding-right:20px;
-				border-color: rgba(238,241,146,0.3);
-				border-right-width: 1px;
-				border-right-style: solid;
-				img {
-					width: 40px;
-					float: left;
-					margin: 10px 10px 10px 18px;
-				}
-				.txt {
-					color:#fff;
-				}
-			}
-			.logo-width{
-				width:230px;
-			}
-			.logo-collapse-width{
-				width:60px
-			}
-			.tools{
-				padding: 0px 23px;
-				width:14px;
-				height: 60px;
-				line-height: 60px;
-				cursor: pointer;
-			}
-		}
-		.main {
+	.container{
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      width: 100%;
+      .header{
+        height: 60px;
+        line-height: 60px;
+        background: #000;
+        color:#fff;
+        .userinfo {
+          text-align: right;
+          padding-right: 35px;
+          float: right;
+          .userinfo-inner {
+            cursor: pointer;
+            color:#fff;
+            img {
+              width: 40px;
+              height: 40px;
+              border-radius: 20px;
+              margin: 10px 0px 10px 10px;
+              float: right;
+            }
+          }
+        }
+        .logo {
+          width:230px;
+          height:60px;
+          font-size: 22px;
+          padding-left:20px;
+          padding-right:20px;
+          border-color: rgba(238,241,146,0.3);
+          border-right-width: 1px;
+          border-right-style: solid;
+          img {
+            width: 40px;
+            float: left;
+            margin: 10px 10px 10px 18px;
+          }
+          .txt {
+            color:#fff;
+          }
+        }
+        .tools{
+          padding: 0px 23px;
+          width:14px;
+          height: 60px;
+          line-height: 60px;
+          cursor: pointer;
+        }
+      }
+
+      .main {
 			display: flex;
 			// background: #324057;
 			position: absolute;
@@ -268,5 +260,5 @@
 				}
 			}
 		}
-	}
+    }
 </style>

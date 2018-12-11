@@ -20,23 +20,23 @@
 				</el-dropdown>
 			</el-col>
 		</el-col>
-
     <el-col :span="24" class="main">
 			<aside :class="collapsed?'menu-collapsed':'menu-expanded'">
         <!-- 导航菜单 -->
-        <el-menu :default-active="$route.path" v-show="!collapsed">
-          <template v-for="(item,index) in $router.options.routes">
-            <el-submenu :index="index=''">
+        <el-menu :default-active="$route.path" class="el-menu-vertical-demo" v-show="!collapsed" router unique-opened>
+          <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
+            <el-submenu :index="index+''" v-if="!item.leaf">
               <template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
-              <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path">
+              <el-menu-item v-for="child in item.children" :index="child.path" :key="child.path" v-if="!child.hidden">
                 {{child.name}}
               </el-menu-item>
             </el-submenu>
+						<el-menu-item v-if="item.leaf&&item.children.length>0" :index="item.children[0].path"><i :class="item.iconCls"></i>{{item.children[0].name}}</el-menu-item>
           </template>
         </el-menu>
 
         <!--导航菜单-折叠后-->
-        <ul v-show="collapsed">
+        <ul v-show="collapsed" ref="menuCollapsed">
           <li v-for="(item,index) in $router.options.routes" v-if="!item.hidden" class="el-submenu item">
 						<template v-if="!item.leaf">
 							<div class="el-submenu__title" style="padding-left: 20px;" @mouseover="showMenu(index,true)" @mouseout="showMenu(index,false)"><i :class="item.iconCls"></i></div>
@@ -92,8 +92,21 @@ export default {
     //折叠导航栏
     collapse:function(){
       this.collapsed=!this.collapsed;
-    },
-  }
+		},
+		showMenu(i,status){
+			this.$refs.menuCollapsed.getElementsByClassName('submenu-hook-'+i)[0].style.display=status?'block':'none';
+		}
+	},
+	mounted() {
+			var user = sessionStorage.getItem('user');
+			if (user) {
+				user = JSON.parse(user);
+				this.sysUserName = user.name || '';
+				this.sysUserAvatar = user.avatar || '';
+			}
+
+		}
+	
 }
 </script>
 

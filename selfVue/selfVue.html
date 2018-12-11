@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>selfVue</title>
+        <script src="selfVue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+          <h2>{{title}}</h2>
+          <input v-model="name">
+          <h1>{{name}}</h1>
+          <button :click="clickMe">click me!</button>
+        </div>  
+    </body>
+    <script type="text/javascript">
+        let selfVue = new SelfVue({
+            el:'#app',
+            data:{
+              title: 'hello world',
+              name: 'canfoo'
+            },
+            methods: {
+              clickMe: function () {
+                  this.title = 'hello world';
+              }
+            },
+            mounted: function () {
+                window.setTimeout(() => {
+                    this.title = '你好';
+                }, 1000);
+            }
+        });
+    </script>
+</html>
