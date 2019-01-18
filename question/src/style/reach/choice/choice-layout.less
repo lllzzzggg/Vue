@@ -1,0 +1,43 @@
+@fontSize: .32rem;
+@borderWidth: .03rem;
+@fontFamily: HelveticaNeue-Medium;
+
+.choice{
+  width: 10.24rem;
+  // height: 100%;
+  color: #F4F5F5;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+.size-question{
+  margin-top: 0.63rem;
+}
+.selects-size{
+  position: relative;
+  margin: 0 auto;
+
+  width: 10.24rem;
+  text-align: center;
+
+  .selects-layout{
+    display: inline-block;
+    margin: 0.2rem .2rem 0;
+  }
+}
+.icon_right{
+  background: url(../../../assets/images/reach/icon_right.png) no-repeat;
+}
+.icon_wrong{
+  background: url(../../../assets/images/reach/icon_wrong.png) no-repeat;
+}
+.animborder{
+  animation: borderShow 1s;
+}
+@keyframes borderShow
+{
+  0%     {opacity: 0}
+  25%    {opacity: 1}
+  50%    {opacity: 0}
+  100%   {opacity: 1}
+}

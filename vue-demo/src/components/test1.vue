@@ -1,7 +1,19 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <el-table>
+    <el-table-column prop="gridMan" label="网格员"></el-table-column>
+    <el-table-column prop="pending" label="待处理"></el-table-column>
+    <el-table-column prop="processed" label="已处理"></el-table-column>
+    <el-table-column prop="completed" label="已完成"></el-table-column>
+    <el-table-column prop="issue" label="我发出"></el-table-column>
+    <el-table-column prop="implement" label="我执行"></el-table-column>
+    <el-table-column prop="copy" label="抄送我"></el-table-column>
+    <el-table-column prop="reportEvent" label="上报事件"></el-table-column>
+    <el-table-column prop="comprehensive" label="综合"></el-table-column>
+  </el-table>
   </div>
+
 </template>
 
 <script>

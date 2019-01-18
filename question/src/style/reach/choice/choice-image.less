@@ -1,0 +1,48 @@
+.bg-select{
+  position: relative;
+  width: 2.58rem;
+  height: 1.93rem;
+  background:  linear-gradient(45deg, #22287C, #471B72);
+  background-size:7.5rem 4.2rem;
+
+  margin-left: .03rem;
+  margin-bottom: -1.96rem;
+  z-index: 0;
+
+  .bg-select-img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.48rem;
+    height: 1.83rem;
+  }
+}
+.select-border{
+  width: 2.58rem;
+  height: 1.93rem;
+  border: @borderWidth solid  #43396E;
+  border-radius: @borderWidth * 2;
+
+  position: relative;
+  z-index: 2;
+}
+
+.answer_right{
+  border: @borderWidth solid #00DE9E;
+}
+.answer_wrong{
+  border: @borderWidth solid #FF0050;
+}
+.hasChosed{
+  border: @borderWidth solid #FFF000;
+}
+.select-border>span{
+  position: absolute;
+  top: -.31rem;
+  right: -.32rem;
+
+  width: .61rem;
+  height: .60rem;
+  background-size: 100%;
+}
